@@ -1,10 +1,9 @@
 # 10805_ProjetoFinal
  
- 2 Projeto 2: Sistema de Reservas para Restaurante
+Projeto 2: Sistema de Reservas para Restaurante
 
  Objetivo:
  Desenvolver um sistema que permita gerenciar reservas de mesas em um restaurante.
- 1
 
 Funcionalidades:
 
@@ -99,4 +98,3 @@ Funções: adicionarReserva, removerReserva, editarReserva
 • Dashboard simples com ocupacao atual e diaria: Interface que mostra a taxa de ocupacao atual e dados como numero total de clientes diários, reservas, etc.
 
 • Menu para escolhar o que quer visualizar: Interface de escolha onde o utilizador escolhe o que pretende ver ex: 1- Dashboard 2- Clientes 3-Reservas etc.
-
