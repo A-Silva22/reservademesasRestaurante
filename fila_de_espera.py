@@ -13,7 +13,7 @@ def chamar_proximo():
     """
     if len(fila_espera) > 0:
         proximo = fila_espera.pop(0)
-        print(f"Chamando {proximo}.")
+        print(f"O próximo cliente é {proximo}.")
     else:
         print("A fila de espera está vazia.")
 
@@ -41,4 +41,4 @@ listar_fila()
 
 chamar_proximo()
 chamar_proximo()
-chamar_proximo()  # Testando quando a fila está vazia
+chamar_proximo()  # Testar quando a fila está vazia
