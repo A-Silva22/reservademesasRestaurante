@@ -53,7 +53,7 @@ GLOBAL:
 
 Ao fim do dia de trabalho fazer os commits!
 Usem estes comandos no terminal para o fazer:
-
+0 -> git pull main
 1 -> git add . 
 2 -> git commit -m "Pequena descrição do que fizeram hoje"
 3 -> git push origin nome_do_branch
