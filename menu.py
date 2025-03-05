@@ -11,9 +11,23 @@ def exibir_menu():
     print("1. Fazer reserva")
     print("2. Cancelar reserva")
     print("3. Lista de reservas")
-    print("4. Sair")
+    print("4. Exibir Dashboard")
+    print("5. Sair")
     opcao = input("Escolha uma opção: ")
     return opcao
+
+def exibir_dashboard(restaurante, reservas_existentes):
+    print("\n=== Dashboard de Ocupação ===")
+    # Ocupação atual
+    mesas_ocupadas = sum(1 for reserva in reservas_existentes if reserva['data'] >= datetime.now().date())
+    mesas_totais = len(restaurante.mesas)
+    print(f"Ocupação atual: {mesas_ocupadas}/{mesas_totais} mesas ocupadas.")
+    
+    # Ocupação diária
+    hoje = datetime.now().date()
+    reservas_hoje = [reserva for reserva in reservas_existentes if reserva['data'] == hoje]
+    print(f"Reservas de hoje: {len(reservas_hoje)} reservas.")
+    input("\nPressione ENTER para voltar ao menu...")
 
 def main():
     restaurante = Restaurante("Restaurante XPTO")
@@ -58,7 +72,7 @@ def main():
                     break
                 if not validar_data(data):
                     input("Pressione ENTER para continuar...")
-                    continue  # Se a data for inválida, reinicia o loop
+                    continue
 
                 horario = input("Horário (HH:MM): ")
                 if horario.lower() == 'voltar':
@@ -66,13 +80,13 @@ def main():
                 if not validar_horario(horario, reservas_existentes, datetime.strptime(data, "%Y-%m-%d")):
                     print("Horário inválido. Certifique-se de que está no formato HH:MM e que não está reservado.")
                     input("Pressione ENTER para continuar...")
-                    continue  # Se o horário for inválido, reinicia o loop
+                    continue
 
                 cliente = Cliente(nome, telefone)
                 reserva = restaurante.fazer_reserva(cliente, int(numero_pessoas), data, horario)
                 if reserva:
                     print("Reserva realizada com sucesso!", reserva)
-                    reservas_existentes.append({'data': datetime.strptime(data, "%Y-%m-%d"), 'horario': horario})  # Adiciona a reserva na lista
+                    reservas_existentes.append({'data': datetime.strptime(data, "%Y-%m-%d").date(), 'horario': horario})  # Adiciona a reserva na lista
                 else:
                     print("Não há mesas disponíveis para esse horário.")
                 input("Pressione ENTER para continuar...")
@@ -104,7 +118,10 @@ def main():
             input("\nPressione ENTER para voltar ao menu...")
         
         elif opcao == "4":
-            print("Saindo do sistema...")
+            exibir_dashboard(restaurante, reservas_existentes)
+        
+        elif opcao == "5":
+            print("A Encerrar...")
             break
         
         else:
