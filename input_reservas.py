@@ -15,12 +15,13 @@ import datetime
 now = datetime.datetime.now()
 hour = now.hour
 
-if hour < 12:
-    print("Bom Dia. ")
-elif hour < 18:
-    print("Boa Tarde. ")
-else:
-    print("Boa Noite. ")
+def saudacao():
+    if hour < 12:
+        print("Bom Dia. ")
+    elif hour >= 12 and hour < 18:
+        print("Boa Tarde. ")
+    else:
+        print("Boa Noite. ")
 
 
 
@@ -40,12 +41,7 @@ import datetime
 now = datetime.datetime.now()
 hour = now.hour
 
-if hour < 12:
-    print("Bom Dia. ")
-elif hour < 18:
-    print("Boa Tarde. ")
-else:
-    print("Boa Noite. ")
+saudacao()
 
 
 
@@ -59,5 +55,7 @@ cancelar = input("Confirma o cancelamento da reserva? (SIM/NÃO) " )
                  
 if cancelar == "SIM":
     print("Reserva Cancelada. ")
+elif cancelar == "NÃO":
+    print("Operação Anulada. ")
 else:
-    print("Operação Anulada")
+    print("Operação Inválida. ")
